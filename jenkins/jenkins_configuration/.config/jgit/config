@@ -1,0 +1,3 @@
+[filesystem "Eclipse Adoptium|11.0.15|/dev/mapper/debian11--vg-home"]
+	timestampResolution = 58000 nanoseconds
+	minRacyThreshold = 5361 microseconds

@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  nexus-service:
+    container_name: nexus
+    image: sonatype/nexus3:latest
+    privileged: true
+    user: root
+    volumes:
+      - ./nexus-data:/nexus-data
+    ports: 
+      - 8081:8081
+      - 8084:8084
+    
+  jenkins-service:
+    container_name: jenkins
+    build: .
+    privileged: true
+    user: root
+    ports: 
+      - 85:8080
+    volumes:
+      - /home/debian/Formation/jenkins/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - ./jenkinsWorkspace:/var/jenkins_home/workspace
+

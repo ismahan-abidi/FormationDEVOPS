@@ -1,0 +1,31 @@
+version: "3.3"
+services:
+  prometheus-service:
+    container_name: prometheus
+    image: prom/prometheus
+    privileged: true
+    user: root
+    ports: 
+      - 9090:9090
+    volumes:
+      - ./etc/:/etc/prometheus/
+      - ./data/prometheus:/prometheus/
+  grafana-service:
+    container_name: grafana
+    image: grafana/grafana
+    privileged: true
+    user: root
+    ports:
+      - 3000:3000
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+  jenkins-service:
+    container_name: jenkins2
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    ports: 
+      - 84:8080
+    volumes:
+      - /home/debian/Formation/jenkins/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock

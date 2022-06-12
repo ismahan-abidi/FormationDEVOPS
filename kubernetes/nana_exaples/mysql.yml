@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: mysql
+spec:  # deployment specific specification sessiion
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template: #configuration de pod
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      volumes:
+        - name: mysql-vol
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+      containers: # on peut avoir plusieurs conteneurs
+      - name: mysql
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_USERNAME
+          valueFrom: 
+            secretKeyRef: 
+              name: mysql-secret
+              key: mysql-user
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef: 
+              name: mysql-secret
+              key: mysql-password
+#on peut avoir plusieur configuration yaml dans un seul fichier séparer par 3 - tiraits
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service  # the endpoint wih we will used to access mysql(meme nom que  app de metadata de kind et ds mysql-config.yml aussi on a écrit mysql-url  mysql-serice
+spec:
+  type: NodePort
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306 # the targetort was  the same of the containerPort
+      nodePort: 30101

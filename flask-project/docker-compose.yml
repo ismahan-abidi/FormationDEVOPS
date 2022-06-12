@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  jenkins_js-service:
+    container_name: jenkins_flask
+    build: .
+    privileged: true
+    user: root
+    ports: 
+      - 84:8080
+    volumes:
+      - /home/debian/Formation/jenkins/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock

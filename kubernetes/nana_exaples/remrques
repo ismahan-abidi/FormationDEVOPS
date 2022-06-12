@@ -1,0 +1,14 @@
+avant de faire le déploiement il faut que secret et configMap soient existent donc il faut dabord exécuter mysql-config.yml et mysql-secret.yml
+kubectl apply -f mysql-config.yml 
+kubectl apply -f mysql-secret.yml
+kubectl apply -f mysql.yml
+kubectl get all
+pour se connecter au pod de base de donnée mysql ""kubectl exec -it pod-name bash
+on tappe printenv pour voir le mot de passe 
+mysql -u root -p 
+et on colle le mot de passe qu'on a trouvé dans printenv
+pour voir l'etat de serviceweb nginx sercice nginx status
+le fichier html de nginx est sous /usr/share/nginx/html
+NB/si on écrit ipconfg et dit not fount on install net-tools
+le résultat de la page nginx a été affiché avec i l'adresseip de minikube:80 réultat ==>503 Service Temporarily Unavailable   nginx
+pour ouvrir la page web il faut que le podd ou container de la pageweb est en exécution 

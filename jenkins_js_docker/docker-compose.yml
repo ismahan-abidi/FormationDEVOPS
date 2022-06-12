@@ -1,0 +1,18 @@
+version: "3.3"
+services:
+  jenkins-service:
+    container_name: jenkins1
+    build: .
+    privileged: true
+    user: root
+    ports: 
+      - 84:8080
+      - 50000:50000
+    volumes:
+      - /home/debian/Formation/jenkins/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  Sonarqube-service:
+    container_name: sonarqube
+    image: sonarqube
+    ports:
+    - 9000:9000

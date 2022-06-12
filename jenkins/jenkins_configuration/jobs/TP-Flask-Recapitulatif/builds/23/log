@@ -1,0 +1,51 @@
+Started by user [8mha:////4HPKE6GDHuivsbkLZYaJzCwNevTknxEqJix0Rt3nv8ycAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL9zOLcxIzEPABIzQRKwgAAAA==[0mismahan
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/TP-Flask-Recapitulatif
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/TP-Flask-Recapitulatif/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/techwithtim/Flask-Web-App-Tutorial.git # timeout=10
+Fetching upstream changes from https://github.com/techwithtim/Flask-Web-App-Tutorial.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/techwithtim/Flask-Web-App-Tutorial.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 3a35f0e491e145e55f0259f848b9fbe64a7a5123 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 3a35f0e491e145e55f0259f848b9fbe64a7a5123 # timeout=10
+Commit message: "Merge pull request #3 from Drc-DEV/patch-1"
+ > git rev-list --no-walk 3a35f0e491e145e55f0259f848b9fbe64a7a5123 # timeout=10
+[TP-Flask-Recapitulatif] $ /bin/sh -xe /tmp/jenkins1758023036927555966.sh
++ docker build -t flask_app_image:v1.0 ./
+Sending build context to Docker daemon  122.4kB
+Step 1/6 : FROM python:3.8-slim-buster
+ ---> 74ff263457e8
+Step 2/6 : USER root
+ ---> Using cache
+ ---> 42f7a710c394
+Step 3/6 : ADD . .
+ ---> Using cache
+ ---> 7cd9af2ececc
+Step 4/6 : RUN pip install -r requirements.txt
+ ---> Using cache
+ ---> 3556fc5c4270
+Step 5/6 : ENTRYPOINT ["python" , "main.py]
+ ---> Using cache
+ ---> 91a854b3fd58
+Step 6/6 : EXPOSE 5000
+ ---> Using cache
+ ---> 3dc73accbea2
+Successfully built 3dc73accbea2
+Successfully tagged flask_app_image:v1.0
++ docker login -u admin -p ismahan http://localhost:8084/repository/sauvgardeimagedockerdejenkins/
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker tag flask_app_image localhost:8084/repository/sauvgardeimagedockerdejenkins/
+Error parsing reference: "localhost:8084/repository/sauvgardeimagedockerdejenkins/" is not a valid repository/tag: invalid reference format
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

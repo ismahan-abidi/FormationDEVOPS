@@ -1,0 +1,15 @@
+# expose-daemonset.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-demo-daemonset
+spec:
+  selector:
+    app: nginx-demo-daemonset
+    version: v1
+    type: web-server
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

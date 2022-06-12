@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:  # deployment specific specification sessiion
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template: #configuration de pod
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      volumes:
+        - name: nginx-vol
+          persistentVolumeClaim:
+            claimName: nginx-pvc
+      containers: # on peut avoir plusieurs conteneurs
+      - name: webapp
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        env:
+        # - name: MYSQL_ROOT_USERNAME
+          # valueFrom: 
+          #   secretKeyRef: 
+          #     name: mysql-secret
+          #     key: mysql-user
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef: 
+              name: mysql-secret
+              key: mysql-password
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-config
+              key:  mysql-url
+#on peut avoir plusieurs configurations yaml dans un seul fichier séparer par 3 - tiraits
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service  # the endpoint wih we will used to access mysql(meme nom que  app de metadata de kind et ds mysql-config.yml aussi on a écrit mysql-url  mysql-serice
+spec:
+  type: NodePort #expose le Service sur l’IP de chacun des noeuds sur un port statique (le NodePort). Un Service ClusterIP sur lequel le NodePort Service redirige est automatiquement créé. 
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80 # the targetort was  the same of the containerPort
+      nodePort: 30100

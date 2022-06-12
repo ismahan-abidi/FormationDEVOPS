@@ -1,0 +1,107 @@
+Started by user [8mha:////4HPKE6GDHuivsbkLZYaJzCwNevTknxEqJix0Rt3nv8ycAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL9zOLcxIzEPABIzQRKwgAAAA==[0mismahan
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/TP-Flask-Recapitulatif
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/TP-Flask-Recapitulatif/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/techwithtim/Flask-Web-App-Tutorial.git # timeout=10
+Fetching upstream changes from https://github.com/techwithtim/Flask-Web-App-Tutorial.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/techwithtim/Flask-Web-App-Tutorial.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 3a35f0e491e145e55f0259f848b9fbe64a7a5123 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 3a35f0e491e145e55f0259f848b9fbe64a7a5123 # timeout=10
+Commit message: "Merge pull request #3 from Drc-DEV/patch-1"
+ > git rev-list --no-walk 3a35f0e491e145e55f0259f848b9fbe64a7a5123 # timeout=10
+[TP-Flask-Recapitulatif] $ /bin/sh -xe /tmp/jenkins7868199186156592859.sh
++ docker build -t flask_app_image:v1.0 ./
+Sending build context to Docker daemon  122.4kB
+Step 1/6 : FROM python:3.8-slim-buster
+3.8-slim-buster: Pulling from library/python
+c1ad9731b2c7: Pulling fs layer
+8ac824f31c0b: Pulling fs layer
+a7f891dabfdd: Pulling fs layer
+37cb37009a0a: Pulling fs layer
+b8f658b1c309: Pulling fs layer
+37cb37009a0a: Waiting
+b8f658b1c309: Waiting
+8ac824f31c0b: Verifying Checksum
+8ac824f31c0b: Download complete
+a7f891dabfdd: Verifying Checksum
+a7f891dabfdd: Download complete
+37cb37009a0a: Verifying Checksum
+37cb37009a0a: Download complete
+b8f658b1c309: Verifying Checksum
+b8f658b1c309: Download complete
+c1ad9731b2c7: Verifying Checksum
+c1ad9731b2c7: Download complete
+c1ad9731b2c7: Pull complete
+8ac824f31c0b: Pull complete
+a7f891dabfdd: Pull complete
+37cb37009a0a: Pull complete
+b8f658b1c309: Pull complete
+Digest: sha256:55cd0cc05d9cdd23c9c0fd1f8623d49c0ec3a6262f8fb88f182709945cd6f003
+Status: Downloaded newer image for python:3.8-slim-buster
+ ---> 74ff263457e8
+Step 2/6 : USER root
+ ---> Running in a38e51409645
+Removing intermediate container a38e51409645
+ ---> 42f7a710c394
+Step 3/6 : ADD . .
+ ---> 7cd9af2ececc
+Step 4/6 : RUN pip install -r requirements.txt
+ ---> Running in ce62dac64051
+Collecting flask
+  Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.2/95.2 KB 5.8 MB/s eta 0:00:00
+Collecting Flask-SQLAlchemy
+  Downloading Flask_SQLAlchemy-2.5.1-py2.py3-none-any.whl (17 kB)
+Collecting flask-login
+  Downloading Flask_Login-0.6.1-py3-none-any.whl (17 kB)
+Collecting Werkzeug>=2.0
+  Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.9/224.9 KB 10.6 MB/s eta 0:00:00
+Collecting importlib-metadata>=3.6.0
+  Downloading importlib_metadata-4.11.4-py3-none-any.whl (18 kB)
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 KB 17.2 MB/s eta 0:00:00
+Collecting click>=8.0
+  Downloading click-8.1.3-py3-none-any.whl (96 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 KB 9.4 MB/s eta 0:00:00
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting SQLAlchemy>=0.8.0
+  Downloading SQLAlchemy-1.4.37-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 20.0 MB/s eta 0:00:00
+Collecting zipp>=0.5
+  Downloading zipp-3.8.0-py3-none-any.whl (5.4 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting greenlet!=0.4.17
+  Downloading greenlet-1.1.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (156 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 156.6/156.6 KB 17.2 MB/s eta 0:00:00
+Installing collected packages: zipp, Werkzeug, MarkupSafe, itsdangerous, greenlet, click, SQLAlchemy, Jinja2, importlib-metadata, flask, Flask-SQLAlchemy, flask-login
+Successfully installed Flask-SQLAlchemy-2.5.1 Jinja2-3.1.2 MarkupSafe-2.1.1 SQLAlchemy-1.4.37 Werkzeug-2.1.2 click-8.1.3 flask-2.1.2 flask-login-0.6.1 greenlet-1.1.2 importlib-metadata-4.11.4 itsdangerous-2.1.2 zipp-3.8.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m[91mWARNING: You are using pip version 22.0.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+[0mRemoving intermediate container ce62dac64051
+ ---> 3556fc5c4270
+Step 5/6 : ENTRYPOINT ["python" , "main.py]
+ ---> Running in da1afe55a0e9
+Removing intermediate container da1afe55a0e9
+ ---> 91a854b3fd58
+Step 6/6 : EXPOSE 5000
+ ---> Running in 9c0e875f49f8
+Removing intermediate container 9c0e875f49f8
+ ---> 3dc73accbea2
+Successfully built 3dc73accbea2
+Successfully tagged flask_app_image:v1.0
++ docker login -u -p http://127.0.0.1:8084/repository/sauvgardeImageDockerDeJenkins
+Error: Cannot perform an interactive login from a non TTY device
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE
