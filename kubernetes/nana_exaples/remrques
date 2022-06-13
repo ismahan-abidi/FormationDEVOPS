@@ -1,3 +1,4 @@
+toujours avec kubernetes si on travail avec kube ctl il faut que kubectl soit on start on fait minikube start 
 avant de faire le déploiement il faut que secret et configMap soient existent donc il faut dabord exécuter mysql-config.yml et mysql-secret.yml
 kubectl apply -f mysql-config.yml 
 kubectl apply -f mysql-secret.yml
