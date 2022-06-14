@@ -1,0 +1,20 @@
+dans ce tp on a fait un conteneurnexus et un conteneur jenkins et on installé dedans docker et python parceque le projet est flasque (bibliothèque python)
+et après on a construire l'image de l'application et la pucher dans nexus
+sur l'interface jenkins on a cloner le proket flasque que mostapha nous a envoyé sur disciord:
+
+les étapes :
+Project url?
+https://github.com/techwithtim/Flask-Web-App-Tutorial/
+Repository URL?
+https://github.com/techwithtim/Flask-Web-App-Tutorial.git
+Branch Specifier (blank for 'any') ?  (il faut vérifier si c'est master ou main)
+
+Execute shell
+?
+Command
+
+docker build -t flask_app_image:v1.0 ./   #cette cmd permet de créer l'image de l'application flasque qu'on va pusher dans nexus
+docker login -u admin -p  ismahan http://localhost:8084/repository/sauvgardeimagedockerdejenkins/  # on a logé aven les identifiant de nexus
+docker tag flask_app_image:v1.0 localhost:8084/repository/sauvgardeimagedockerdejenkins/flask_app_image
+docker push localhost:8084/repository/sauvgardeimagedockerdejenkins/flask_app_image  #on a pusher l'image dans nexus apré avoir créer le dossier sauvgardeimagedockerdejenkins
+dans nexus.
